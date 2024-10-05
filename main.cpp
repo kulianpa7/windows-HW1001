@@ -18,6 +18,21 @@ int main(int argc, char *argv[]) {
     memberLayout0->addWidget(memberLabel0);
     memberTab0->setLayout(memberLayout0);
 
+    QWidget *memberTab3 = new QWidget;
+    QLabel *memberLabel3 = new QLabel("這是組員3頁面");
+    QPushButton *fileButton = new QPushButton("File select");
+    QVBoxLayout *memberLayout3 = new QVBoxLayout;
+    memberLayout3->addWidget(memberLabel3);
+    memberLayout3->addWidget(fileButton);
+    memberTab3->setLayout(memberLayout3);
+
+
+    QObject::connect(fileButton, &QPushButton::clicked, [=]() {
+        QString filePath = QFileDialog::getOpenFileName(nullptr, "選擇檔案", "", "所有檔案 (*.*)");
+        if (!filePath.isEmpty()) {
+            memberLabel0->setText(filePath);
+        }
+    });
 
     QWidget *memberTab2 = new QWidget;
     QLabel *memberLabel2 = new QLabel("這是組員2頁面");
