@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     memberLayout0->addWidget(memberLabel0);
     memberTab0->setLayout(memberLayout0);
 
+
     QWidget *memberTab2 = new QWidget;
     QLabel *memberLabel2 = new QLabel("這是組員2頁面");
     QPushButton *styleButton = new QPushButton("Front select");
@@ -32,6 +33,22 @@ int main(int argc, char *argv[]) {
         QFont font = QFontDialog::getFont(&ok, memberLabel0->font(), nullptr, "選擇字體");
         if (ok) {
             memberLabel0->setFont(font);
+
+
+    QWidget *memberTab1 = new QWidget;
+    QLabel *memberLabel1 = new QLabel("這是組員1頁面");
+    QVBoxLayout *memberLayout1 = new QVBoxLayout;
+    QPushButton *colorButton = new QPushButton("color select");
+    memberLayout1->addWidget(memberLabel1);
+    memberLayout1->addWidget(colorButton);
+    memberTab1->setLayout(memberLayout1);
+
+
+    QObject::connect(colorButton, &QPushButton::clicked, [=]() {
+        QColor color = QColorDialog::getColor(Qt::white, nullptr, "選擇文字顏色");
+        if (color.isValid()) {
+            QString colorName = color.name();
+            memberLabel0->setStyleSheet(QString("color: %1;").arg(colorName));
         }
     });
     
