@@ -19,6 +19,22 @@ int main(int argc, char *argv[]) {
     memberTab0->setLayout(memberLayout0);
 
 
+    QWidget *memberTab2 = new QWidget;
+    QLabel *memberLabel2 = new QLabel("這是組員2頁面");
+    QPushButton *styleButton = new QPushButton("Front select");
+    QVBoxLayout *member2Layout = new QVBoxLayout;
+    member2Layout->addWidget(memberLabel2);
+    member2Layout->addWidget(styleButton);
+    memberTab2->setLayout(member2Layout);
+
+
+    QObject::connect(styleButton, &QPushButton::clicked, [=]() {
+        bool ok;
+        QFont font = QFontDialog::getFont(&ok, memberLabel0->font(), nullptr, "選擇字體");
+        if (ok) {
+            memberLabel0->setFont(font);
+
+
     QWidget *memberTab1 = new QWidget;
     QLabel *memberLabel1 = new QLabel("這是組員1頁面");
     QVBoxLayout *memberLayout1 = new QVBoxLayout;
