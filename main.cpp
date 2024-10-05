@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     memberLayout0->addWidget(memberLabel0);
     memberTab0->setLayout(memberLayout0);
 
+
     QWidget *memberTab1 = new QWidget;
     QLabel *memberLabel1 = new QLabel("這是組員1頁面");
     QVBoxLayout *memberLayout1 = new QVBoxLayout;
